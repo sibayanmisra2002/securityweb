@@ -1,7 +1,11 @@
 import React from "react";
 import "./criminal.css";
+import useSound from "use-sound"; // Import useSound from react-use-sound
+import Sound from "../../assets/wave.mp3"
 
 const Criminal = () => {
+    const soundUrl = Sound;
+  const [play] = useSound(soundUrl); 
   return (
     <div class="relative">
   <div class="criminal border-2 border-dashed bg-[#424769] rounded-md m-14 p-20 flex text-2xl relative">
@@ -29,7 +33,8 @@ const Criminal = () => {
         </div>
       </div>
     </div>
-    <button type="button" class="absolute top-0 right-0 mt-4 mr-5 text-white bg-[#676f9d] hover:bg-[#2d3250] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+    <button onMouseEnter={play} type="button" class="absolute top-0 right-0 mt-4 mr-5 text-white bg-[#676f9d] hover:bg-[#2d3250] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+        
       <svg
         class="w-6 h-6  dark:text-white"
         aria-hidden="true"
