@@ -29,7 +29,7 @@ const Criminal = () => {
         </div>
       </div>
     </div>
-    <button type="button" class="absolute top-0 right-0 mt-2 mr-2 text-white bg-[#676f9d] hover:bg-[#2d3250] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+    <button type="button" class="absolute top-0 right-0 mt-4 mr-6 text-white bg-[#676f9d] hover:bg-[#2d3250] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
       <svg
         class="w-6 h-6  dark:text-white"
         aria-hidden="true"
