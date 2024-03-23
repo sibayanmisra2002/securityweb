@@ -6,15 +6,15 @@ const Navbar = () => {
   return (
     <div className="m-6 flex  font-bold">
       <div className="flex basis-4/6 ">
-        <div className=" text-4xl  underline ">Security. </div>
+        <div className=" text-4xl  underline cursor-pointer ">Security. </div>
         <GiCctvCamera />
       </div>
       <div className="flex text-2xl pt-2 gap-x-12 ">
-        <div>Records</div>
-        <div>About</div>
-        <div>Notifications</div>
+        <div className="hover:text-[#676f9d] cursor-pointer">Records</div>
+        <div className="hover:text-[#676f9d] cursor-pointer">About</div>
+        <div className="hover:text-[#676f9d] cursor-pointer">Notifications</div>
       </div>
-      <div className="border-2 rounded-full w-12 h-12 ml-14"></div>
+      <div className="border-2 rounded-full w-12 h-12 ml-14 cursor-pointer"></div>
     </div>
   );
 };
