@@ -10,6 +10,7 @@ const Navbar = () => {
         <div>About</div>
         <div>Notifications</div>
       </div>
+        <div className="border-2 rounded-full w-12 h-12 ml-8"></div>
     </div>
   );
 };
