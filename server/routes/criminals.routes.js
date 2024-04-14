@@ -13,4 +13,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/findCriminal", async (req, res) => {
+  try {
+    const { id } = req.body;
+    const reqCriminal = await criminal.findOne({ where: { id: id } });
+    res.json(reqCriminal);
+  } catch (error) {
+    console.error("Error fetching people:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = router;
