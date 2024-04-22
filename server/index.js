@@ -1,19 +1,26 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var cookieParser = require("cookie-parser");
+const express = require("express");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const cors = require("cors"); // Import CORS middleware
 const criminalRouter = require("./routes/criminals.routes");
+const sequelize = require("./dbConnect");
+
 require("dotenv").config();
 
-var app = express();
+const app = express();
 
+// Configure CORS to allow requests from http://localhost:5173
+const corsOptions = {
+  origin: "http://localhost:5173",
+};
+
+app.use(cors(corsOptions)); // Enable CORS with specific options
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
-// configure sequelize connection
-const sequelize = require("./dbConnect");
 sequelize
   .authenticate()
   .then(() => {
