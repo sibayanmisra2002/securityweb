@@ -15,8 +15,8 @@ router.get("/", async (req, res) => {
 
 router.get("/findCriminal", async (req, res) => {
   try {
-    const { id } = req.body;
-    const reqCriminal = await criminal.findOne({ where: { id: id } });
+    const { name, id } = req.body;
+    const reqCriminal = await criminal.findOne({ where: { name: name } });
     res.json(reqCriminal);
   } catch (error) {
     console.error("Error fetching people:", error);
