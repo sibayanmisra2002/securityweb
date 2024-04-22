@@ -4,6 +4,7 @@ import axios from "axios"; // Import Axios for making HTTP requests
 
 const Criminal = () => {
   const [criminalData, setCriminalData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
@@ -18,10 +19,28 @@ const Criminal = () => {
     fetchData();
   }, []); // Empty dependency array ensures useEffect runs only once on mount
 
+  // Function to handle search term change
+  const handleSearchTermChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Function to filter criminal records based on search term
+  const filteredCriminals = criminalData.filter((criminal) =>
+    criminal.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="relative">
-      {/* Check if criminalData is available */}
-      {criminalData.map((criminal) => (
+      {/* Search bar */}
+      <input
+        type="text"
+        placeholder="Search by criminal name"
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+        className="border border-gray-400 rounded-md px-3 py-2 mb-4"
+      />
+      {/* Check if filteredCriminals is available */}
+      {filteredCriminals.map((criminal) => (
         <div key={criminal.id} className="criminal border-2 border-dashed bg-[#424769] rounded-md m-14 p-20 flex text-2xl relative">
           <div className="basis-1/4">
             <img
