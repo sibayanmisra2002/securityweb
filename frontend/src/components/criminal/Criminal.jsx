@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./criminal.css";
 import axios from "axios"; // Import Axios for making HTTP requests
 
+
 const Criminal = () => {
   const [criminalData, setCriminalData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -51,7 +52,7 @@ const Criminal = () => {
           <div className="basis-1/4">
             <img
               className="h-96"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Ted_Bundy_headshot.jpg/431px-Ted_Bundy_headshot.jpg"
+              src={`../../../public/${criminal.name}.jpg`}
               alt="Criminal"
             />
           </div>
