@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./criminal.css";
 import axios from "axios"; // Import Axios for making HTTP requests
 
-
 const Criminal = () => {
   const [criminalData, setCriminalData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
