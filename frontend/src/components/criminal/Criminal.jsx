@@ -30,18 +30,24 @@ const Criminal = () => {
   );
 
   return (
-    <div className="relative">
+    <div className="flex flex-col "> {/* Center content */}
       {/* Search bar */}
-      <input
-        type="text"
-        placeholder="Search by criminal name"
-        value={searchTerm}
-        onChange={handleSearchTermChange}
-        className="border border-gray-400 rounded-md px-3 py-2 mb-4"
-      />
+      <div className="mx-auto mb-4"> {/* Center the search bar */}
+        <input
+          type="text"
+          placeholder="Search by criminal name"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+          className="border border-gray-400 rounded-md px-3 py-2 text-black"
+        />
+      </div>
+
       {/* Check if filteredCriminals is available */}
       {filteredCriminals.map((criminal) => (
-        <div key={criminal.id} className="criminal border-2 border-dashed bg-[#424769] rounded-md m-14 p-20 flex text-2xl relative">
+        <div
+          key={criminal.id}
+          className="criminal border-2 border-dashed bg-[#424769] rounded-md m-14 p-20 flex text-2xl relative"
+        >
           <div className="basis-1/4">
             <img
               className="h-96"
@@ -60,7 +66,9 @@ const Criminal = () => {
               </div>
             </div>
             <div className="border-2 p-6 rounded-md bg-[#676f9d]">
-              <div className="italic font-bold mb-4 underline">Criminal Record</div>
+              <div className="italic font-bold mb-4 underline">
+                Criminal Record
+              </div>
               <div>{criminal.criminal_record}</div>
             </div>
           </div>
