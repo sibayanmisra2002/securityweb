@@ -50,7 +50,7 @@ const Criminal = () => {
         >
           <div className="basis-1/4">
             <img
-              className="h-96"
+              className="h-96 w-72 grayscale"
               src={`../../../public/${criminal.name}.jpg`}
               alt="Criminal"
             />
