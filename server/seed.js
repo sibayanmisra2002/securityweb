@@ -1,6 +1,7 @@
 const Criminal = require("./model/criminals.model");
 const sequelize = require("./dbConnect");
-
+const csv = require("csv-parser");
+const fs = require("fs");
 // Function to generate random date within a range
 function randomDate(start, end) {
   return new Date(
@@ -8,64 +9,61 @@ function randomDate(start, end) {
   );
 }
 
-// Function to generate dummy criminal data
-function generateDummyCriminal() {
-  const names = [
-    "John Doe",
-    "Jane Smith",
-    "Michael Johnson",
-    "Emily Brown",
-    "William Davis",
-    "Olivia Martinez",
-    "James Wilson",
-    "Emma Anderson",
-    "Alexander Taylor",
-    "Sophia Thomas",
-  ];
-  const places = [
-    "New York",
-    "Los Angeles",
-    "Chicago",
-    "Houston",
-    "Phoenix",
-    "Philadelphia",
-    "San Antonio",
-    "San Diego",
-    "Dallas",
-    "San Jose",
-  ];
-  const records = [
-    "Theft",
-    "Assault",
-    "Drug trafficking",
-    "Robbery",
-    "Burglary",
-    "Fraud",
-    "Homicide",
-    "Kidnapping",
-    "Arson",
-    "Extortion",
-  ];
-  const details = [
-    "Armed and dangerous",
-    "Approach with caution",
-    "Known to be violent",
-    "Wanted for multiple felonies",
-    "May be armed",
-  ];
+function separateArrays(records) {
+  const recordIDs = [];
+  const recordDates = [];
+  const names = [];
+  const nativePlaces = [];
+  const datesOfBirth = [];
+  const details = [];
+  const criminalRecords = [];
+  const images = [];
+
+  records.forEach((record) => {
+    recordIDs.push(record["Record ID"]);
+    recordDates.push(record["Record Date"]);
+    names.push(record["Name"]);
+    nativePlaces.push(record["Native Place"]);
+    datesOfBirth.push(record["Date of Birth"]);
+    details.push(record["Details"]);
+    criminalRecords.push(record["Criminal Record"]);
+    images.push(record["Image"]);
+  });
 
   return {
-    name: names[Math.floor(Math.random() * names.length)],
-    record_date: randomDate(new Date(2010, 0, 1), new Date())
-      .toISOString()
-      .slice(0, 10),
-    native_place: places[Math.floor(Math.random() * places.length)],
-    criminal_record: records[Math.floor(Math.random() * records.length)],
-    dob: randomDate(new Date(1950, 0, 1), new Date())
-      .toISOString()
-      .slice(0, 10),
-    details: details[Math.floor(Math.random() * details.length)],
+    recordIDs,
+    recordDates,
+    names,
+    nativePlaces,
+    datesOfBirth,
+    details,
+    criminalRecords,
+    images,
   };
+}
+
+// Function to generate dummy criminal data
+function generateDummyCriminal(resArr) {
+  const { names, nativePlaces, details, criminalRecords, recordDates } =
+    separateArrays(resArr);
+
+  const dummyCriminals = [];
+  const numOfCriminals = resArr.length; // Assuming resArr.length is the desired number of objects
+
+  for (let i = 0; i < numOfCriminals; i++) {
+    dummyCriminals.push({
+      name: names[i],
+      record_date: recordDates[i],
+      native_place: nativePlaces[i],
+      criminal_record: criminalRecords[i],
+      dob: randomDate(new Date(1950, 0, 1), new Date())
+        .toISOString()
+        .slice(0, 10),
+      details: details[i],
+    });
+  }
+
+  return dummyCriminals;
 }
 
 // Function to seed the database with dummy data
@@ -73,15 +71,19 @@ async function seedDatabase() {
   // Sync the model with the database
   await Criminal.sync({ force: true });
 
-  // Create 10 dummy criminal records
-  const dummyData = Array.from({ length: 10 }, generateDummyCriminal);
+  const results = [];
 
-  // Insert dummy data into the database
-  await Criminal.bulkCreate(dummyData);
-
-  console.log("Dummy data inserted successfully.");
-  // Close the database connection
-  await sequelize.close();
+  fs.createReadStream("Criminal Datasheet - Criminal Database.csv")
+    .pipe(csv())
+    .on("data", (data) => results.push(data))
+    .on("end", async () => {
+      const dummyData = generateDummyCriminal(results);
+      // Insert dummy data into the database
+      await Criminal.bulkCreate(dummyData);
+      console.log("Dummy data inserted successfully.");
+      // Close the database connection
+      await sequelize.close();
+    });
 }
 
 seedDatabase();
