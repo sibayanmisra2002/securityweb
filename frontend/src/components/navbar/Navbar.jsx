@@ -23,7 +23,7 @@ const Navbar = () => {
         <GiCctvCamera />
       </div>
       <div className="flex text-2xl pt-2 gap-x-12 ">
-        <div className="hover:text-[#676f9d] cursor-pointer" onMouseEnter={play} ><Link to="/about">Records</Link></div>
+        <div className="hover:text-[#676f9d] cursor-pointer" onMouseEnter={play} ><Link to="/">Records</Link></div>
       <div className="hover:text-[#676f9d] cursor-pointer" onMouseEnter={play} ><Link to="/about">About</Link></div>
         
         <div className="hover:text-[#676f9d] cursor-pointer" onMouseEnter={play} >Notifications</div>
