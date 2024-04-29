@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
-* {
+/* * {
   margin: 0;
   margin-bottom: 30px;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   background: #100721;
   font-family: "Ubuntu Mono", monospace;
   font-weight: 400;
-}
+} */
 
 .container {
   width: 100%;
@@ -46,7 +46,7 @@ body {
 }
 
 .container > div:nth-of-type(4) {
-  background: url("https://images.pexels.com/photos/247322/pexels-photo-247322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat 50% / cover;
+  background: url("https://i.ibb.co/yWyxyr2/shreyon.jpg") no-repeat 50% / cover;
 }
 .container > div:nth-of-type(5) {
     background: url("https://i.ibb.co/Gkd0Rzh/B612-20240121-164721-628.jpg") no-repeat 50% / cover;
@@ -58,7 +58,7 @@ body {
     background: url("https://i.ibb.co/8N7XDVJ/PSX-20231229-162607.jpg") no-repeat 50% / cover;
   }
   .container > div:nth-of-type(8) {
-    background: url("https://images.pexels.com/photos/247322/pexels-photo-247322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat 50% / cover;
+    background: url("https://i.ibb.co/9Tw2HLh/romit.jpg") no-repeat 50% / cover;
   }
   .container > div:nth-of-type(9) {
     background: url("https://i.ibb.co/W2HTjYb/shreyas.jpg") no-repeat 50% / cover;
@@ -67,7 +67,7 @@ body {
     background: url("https://i.ibb.co/q9xTVQr/ronit.jpg") no-repeat 50% / cover;
   }
   .container > div:nth-of-type(11) {
-    background: url("https://images.pexels.com/photos/247322/pexels-photo-247322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat 50% / cover;
+    background: url("https://i.ibb.co/RHr1Dct/faruk.jpg") no-repeat 50% / cover;
   }
 
 .container > div .content {
