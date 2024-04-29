@@ -37,7 +37,7 @@ const About = () => {
         <div>
           <div class="content">
             <h2>Shreya Prasad</h2>
-            <span>Testing</span>
+            <span>Database Manager</span>
           </div>
         </div>
         <div>
@@ -85,7 +85,7 @@ const About = () => {
         <div>
           <div class="content">
             <h2>Ronit Biswas</h2>
-            <span>Frontend Development</span>
+            <span>Testing</span>
           </div>
         </div>
         <div>
